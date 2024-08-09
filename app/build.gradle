@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+group = 'com.github.flaze07'
+version = '1.0'
+
+sourceCompatibility = 11 // java 8
+targetCompatibility = 11
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'com.google.guava:guava:29.0-jre'
+}
+
+java {
+	withSourcesJar()
+	withJavadocJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+		from components.java
+        }
+    }
+}
